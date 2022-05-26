@@ -1,6 +1,0 @@
-validators
-discord.py
-requests
-tldextract
-python-dotenv
-# Quart
