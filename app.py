@@ -23,10 +23,13 @@ lk_list = json.loads(requests.get('https://spen.tk/api/v1/links').text)["links"]
 # lk_list = json.loads(requests.get('https://api.hyperphish.com/gimme-domains').text)
 
 # class Lupo(discord.Client):
+
+
 @lupo.event
 async def on_ready():
     await lupo.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="how to code."))
     print("The bot is ready.")
+
 
 @lupo.event
 async def on_message(msg):
@@ -49,7 +52,7 @@ async def on_message(msg):
 
         elif cmd[0] == "bl":
             try:
-                f = open('blacklist.json','r+')
+                f = open('blacklist.json', 'r+')
                 data = json.load(f)
 
                 for x in range(len(cmd)):
@@ -70,7 +73,7 @@ async def on_message(msg):
 
         elif cmd[0] == "rmbl":
             try:
-                f = open('blacklist.json','r+')
+                f = open('blacklist.json', 'r+')
                 data = json.load(f)
                 res = []
 
@@ -112,7 +115,7 @@ async def on_message(msg):
 
         elif cmd[0] == "sw":
             try:
-                f = open('swearjar.json','r+')
+                f = open('swearjar.json', 'r+')
                 data = json.load(f)
 
                 for x in range(len(cmd)):
@@ -133,7 +136,7 @@ async def on_message(msg):
 
         elif cmd[0] == "rmsw":
             try:
-                f = open('swearjar.json','r+')
+                f = open('swearjar.json', 'r+')
                 data = json.load(f)
                 res = []
 
@@ -312,7 +315,7 @@ Peraturan Promosi (Khusus untuk @Merchants)
                 reply = await msg.channel.send("Please wait while i check and clean this channel...")
 
                 msg_list = await msg.channel.history().flatten()
-                f = open('blacklist.json','r+')
+                f = open('blacklist.json', 'r+')
                 data = json.load(f)
 
                 for x in range(0, len(msg_list) - 1):
@@ -417,9 +420,11 @@ Peraturan Promosi (Khusus untuk @Merchants)
             if "<@695281927745437746>" in msg.content:
                 await msg.channel.send("My creator, <@" + os.getenv("OWNER_ID") + "> is currently working at his office. Try to contact him later.")
 
+
 def is_command_message(msg: str) -> bool:
     COMMAND_PREFIX = ">"
     return msg.content[0] == COMMAND_PREFIX
+
 
 def parse_command_message(msg: str) -> List[str]:
     return msg.content[1:].split(" ")
@@ -427,5 +432,6 @@ def parse_command_message(msg: str) -> List[str]:
 # client = Lupo()
 # PORT = os.environ.get('PORT')
 # lupo.loop.create_task(app.run_task('0.0.0.0', PORT))
+
 
 lupo.run(os.getenv('BOT_TOKEN'))
