@@ -7,10 +7,10 @@ import random
 import time
 import tldextract
 from dotenv import load_dotenv
-# from quart import Quart
+from .utils import filter_word_number
+
 
 load_dotenv()
-# app = Quart(__name__)
 
 lupo = discord.Client()
 
@@ -20,34 +20,6 @@ owner_away = False
 owner_work = False
 lk_list = json.loads(requests.get('https://spen.tk/api/v1/links').text)["links"]
 # lk_list = json.loads(requests.get('https://api.hyperphish.com/gimme-domains').text)
-
-word_number = {
-    "i" : "1",
-    "l" : "1",
-    "e" : "3",
-    "b" : "3",
-    "a" : "4",
-    "s" : "5",
-    "g" : "6",
-    "b" : "8",
-    "g" : "9",
-    "o" : "0"
-}
-
-def filter_word_number(x):
-    res = ""
-    
-    word = list(word_number.keys())
-    number = list(word_number.values())
-    
-    for i in x:
-        if i in number:
-            pos = number.index(i)
-            res += word[pos]
-        else:
-            res += i
-        
-    return res
 
 @lupo.event
 # class Lupo(discord.Client):
